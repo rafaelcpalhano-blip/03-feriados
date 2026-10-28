@@ -5,7 +5,11 @@ function App() {
   return (
     
     <main>
-      <h1>Próximo Feriado</h1>
+      <header className='header'>
+         <h1>Próximo Feriado</h1>
+         <p>Feriados nacionais do Brasil</p>
+      </header>
+     
     </main>
   )
 }
