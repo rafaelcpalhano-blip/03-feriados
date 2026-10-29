@@ -23,7 +23,7 @@ function App() {
         
 
         {holidays.map((item) => (
-             <HolidayCard key={item.date} date={item.date} name={item.name} weekday={item.weekday} type={item.type} />
+             <HolidayCard key={item.date} date={item.date} name={item.name} weekday={item.weekday} />
           ))}
 
      </main>
