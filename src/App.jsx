@@ -2,6 +2,7 @@ import './App.css'
 
 /*Components Imports */
 import Header from './components/Header'
+import HolidayCard from './components/HolidayCard'
 import NextHoliday from './components/NextHoliday'
 
 /*Mocked Data*/
@@ -22,17 +23,7 @@ function App() {
         
 
         {holidays.map((item) => (
-              <article key={item.date} className='holiday-card'>
-            <p className='holiday-date'>{item.date}</p>
-
-            <div className='holiday-info'>
-              <h2>{item.name}</h2>
-              <p>{item.weekday}</p>
-            </div>
-
-
-            <span className='tag weekend'>{item.type}</span>
-            </article>
+             <HolidayCard key={item.date} date={item.date} name={item.name} weekday={item.weekday} type={item.type} />
           ))}
 
      </main>
