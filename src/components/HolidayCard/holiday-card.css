@@ -52,3 +52,7 @@
 }
 /* FINAL DA LISTA DE FERIADO */
 
+.holiday-list {
+  display: flex;
+  flex-direction: column;
+}
