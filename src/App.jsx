@@ -1,14 +1,23 @@
+import { useState } from 'react'
+
 import './App.css'
 
 /*Components Imports */
 import Header from './components/Header'
 import HolidayCard from './components/HolidayCard'
+import MonthFilter from './components/MonthFilter'
 import NextHoliday from './components/NextHoliday'
+import YearForm from './components/NextHoliday/YearForm'
 
 /*Mocked Data*/
 import holidays from './data/holidays'
 
 function App() {
+const [month, setMonth] = useState("");
+
+const isVisible = holidays.filter((holiday) => {
+  return month === "" || holiday.date.includes(`-${month}-`);
+});
 
   return (
     
@@ -17,16 +26,27 @@ function App() {
 
       <NextHoliday />
      
+     <section className='filters'>
+      <YearForm/>
+      <MonthFilter month={month} onChange={setMonth}/>
+     </section>
+
       <p className='count'>14 feriados em 2026</p>
 
-     <main className='holiday-list'>
+    {
+      isVisible.length == 0 ? (
+        <p className='empty'>Nenhum Feriado neste mês.</p>
+      ) : (
+         <main className='holiday-list'>
         
 
-        {holidays.map((item) => (
+        {isVisible.map((item) => (
              <HolidayCard key={item.date} date={item.date} name={item.name} weekday={item.weekday} />
           ))}
 
      </main>
+      )
+    }
     </>
   )
 }
