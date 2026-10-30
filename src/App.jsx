@@ -1,4 +1,11 @@
 import './App.css'
+
+/*Components Imports */
+import Header from './components/Header'
+import HolidayCard from './components/HolidayCard'
+import NextHoliday from './components/NextHoliday'
+
+/*Mocked Data*/
 import holidays from './data/holidays'
 
 function App() {
@@ -6,16 +13,9 @@ function App() {
   return (
     
     <>
-      <header className='header'>
-         <h1>Próximo Feriado</h1>
-         <p>Feriados nacionais do Brasil</p>
-      </header>
-      <section className='next-holiday'>
-        <p>O próximo é</p>
-        <h2>Finados</h2>
-        <p>segunda-feira, 02/11/2026</p>
-        <h2 className='countdown'>Faltam 5 d, 2 h, 37 min e 22 s</h2>
-      </section>
+      <Header />
+
+      <NextHoliday />
      
       <p className='count'>14 feriados em 2026</p>
 
@@ -23,17 +23,7 @@ function App() {
         
 
         {holidays.map((item) => (
-              <article key={item.date} className='holiday-card'>
-            <p className='holiday-date'>{item.date}</p>
-
-            <div className='holiday-info'>
-              <h2>{item.name}</h2>
-              <p>{item.weekday}</p>
-            </div>
-
-
-            <span className='tag weekend'>{item.type}</span>
-            </article>
+             <HolidayCard key={item.date} date={item.date} name={item.name} weekday={item.weekday} />
           ))}
 
      </main>
