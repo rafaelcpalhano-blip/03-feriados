@@ -6,7 +6,7 @@ export default function YearForm() {
     <form className="year-form">
         <label htmlFor="year">Ano</label>
         <div className="year-row">
-            <input type="number" id="year" placeholder="2026" requirid/>
+            <input type="number" id="year" placeholder="2026" required/>
             <button>Buscar</button>
         </div>
     </form>

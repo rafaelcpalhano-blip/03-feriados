@@ -17,3 +17,8 @@
   gap: 12px;
   margin-bottom: 12px;
 }
+
+.empty {
+  padding: 24px;
+  text-align: center;
+}
