@@ -7,12 +7,13 @@ import Header from './components/Header'
 import HolidayCard from './components/HolidayCard'
 import MonthFilter from './components/MonthFilter'
 import NextHoliday from './components/NextHoliday'
-import YearForm from './components/NextHoliday/YearForm'
+import YearForm from './components/YearForm'
 
 /*Mocked Data*/
 //import holidays from './data/holidays'
 
 const apiURL = "https://brasilapi.com.br/api/feriados/v1/";
+const openedAt = new Date();
 
 function App() {
   const [month, setMonth] = useState("");
@@ -54,6 +55,10 @@ function App() {
     return month === "" || holiday.date.includes(`-${month}-`);
   });
 
+  const upcominingHolidays = holidays.filter((holiday) => {
+return new Date(`${holiday.date}T23:59:59`) >= openedAt;
+  })
+console.log(upcominingHolidays)
 let content = "";
 
 if(loading) {
@@ -87,7 +92,11 @@ if(loading) {
     <>
       <Header />
 
-      <NextHoliday />
+      {
+        upcominingHolidays.length > 0 && <NextHoliday holiday={upcominingHolidays[0]} />
+      }
+
+      
 
       <section className='filters'>
         <YearForm year={year} onSearch={setYear} />
